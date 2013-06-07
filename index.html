@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width">
     <link href="css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
 <body>
-    <h1>SteamOX</h1>
-    <button id="create-party">Create a new game</button>   
-    <button id="join">Join a game</button>   
-    
+    <div id="homescreen">
+	    <h1>Welcome on SteamOX</h1>
+        <button id="create-party">Create a new game</button>
+        <button id="join">Join a game</button>
+    </div>
+    <div id="joinscreen" style="display:none;">
+        <h1>Join a party</h1>
+        <h4>Please enter the party code</h4>
+        <form id="partycodeform">
+            <input id="partycode" value=""><button type="submit" class="add-button">Join</button>
+        </form>
+    </div>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
