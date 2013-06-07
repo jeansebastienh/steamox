@@ -1,0 +1,11 @@
+{
+  "name": "SteamOX",
+  "description": "A FirefoxOS's App !",
+  "type": "privileged",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Your name or organization",
+    "url": "http://your-homepage-here.org"
+  },
+  "default_locale": "en"
+}
