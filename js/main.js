@@ -1,5 +1,9 @@
 (function() {
 
+    const PROTOCOL = Game.config.protocol;
+    const HOST     = Game.config.host;
+    const PORT     = Game.config.port;
+
     var init = function init() {
         var btnCreate = document.getElementById('create-party');
         btnCreate.addEventListener('click', function() {
@@ -39,4 +43,10 @@
         init();
     }
 
+    var socketIoAutoloader = function() {
+        var script = document.createElement('script');
+        script.src = PROTOCOL + '://' + HOST + ':' + PORT + '/socket.io/socket.io.js';
+        document.body.appendChild(script);
+        //script.addEventListener('load', init, false);
+    }();
 })();

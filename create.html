@@ -2,26 +2,41 @@
 <html>
 
 <form action="" method="get" onsubmit="return false;">
-	<input type="text" id="room" required>
-	<button id="btn-create">create</button>
+    <input type="text" id="room" required>
+    <button id="btn-create">create</button>
 </form>
 
 <div id="userlist"></div>
 
-<script type="text/javascript" src="http://pandaco.lan:4000/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript">
+    
+const PROTOCOL = Game.config.protocol;
+const HOST     = Game.config.host;
+const PORT     = Game.config.port;
 
-var socket = io.connect('http://pandaco.lan:4000');
 
-document.getElementById('btn-create').addEventListener('click', function() {
+var init = function() {
+    
+    var socket = io.connect(PROTOCOL + '://' + HOST + ':' + PORT);
 
-	socket.emit('create', {'room': document.getElementById('room').value});
+    document.getElementById('btn-create').addEventListener('click', function() {
 
-	socket.on('updateUserlist', function(data) {
-		document.getElementById('userlist').innerHTML = data.count;
-	});
+        socket.emit('create', {'room': document.getElementById('room').value});
 
-}, false);
+        socket.on('updateUserlist', function(data) {
+            document.getElementById('userlist').innerHTML = data.count;
+        });
+
+    }, false);
+}
+
+var socketIoAutoloader = function() {
+    var script = document.createElement('script');
+    script.src = PROTOCOL + '://' + HOST + ':' + PORT + '/socket.io/socket.io.js';
+    document.body.appendChild(script);
+    script.addEventListener('load', init, false);
+}();
 
 </script>
 </html>

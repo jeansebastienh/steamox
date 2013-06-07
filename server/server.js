@@ -1,4 +1,6 @@
-var io = require('socket.io').listen(4000);
+GameConfig = require('../js/config').loadGameConfig();
+
+var io = require('socket.io').listen(parseInt(GameConfig.port, 10));
 
 io.set('log level', 2);
 io.set('transports', ['websocket', 'flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
