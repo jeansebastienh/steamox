@@ -1,0 +1,20 @@
+html {
+  background-color: grey;
+    min-height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+button {
+	display: block;
+	text-align: center;
+    font-size: 200%;
+    margin: 1em auto;
+    padding: .5em;
+    width: 10em;
+    max-width: 80%;
+    line-height: 1.2em;
+}
+
