@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<form action="" method="get" onsubmit="return false;">
+	<input type="text" id="room" required>
+	<button id="btn-create">create</button>
+</form>
+
+<div id="userlist"></div>
+
+<script type="text/javascript" src="http://pandaco.lan:4000/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+
+var socket = io.connect('http://pandaco.lan:4000');
+
+document.getElementById('btn-create').addEventListener('click', function() {
+
+	socket.emit('create', {'room': document.getElementById('room').value});
+
+	socket.on('updateUserlist', function(data) {
+		document.getElementById('userlist').innerHTML = data.count;
+	});
+
+}, false);
+
+</script>
+</html>
