@@ -1,2 +1,4 @@
 .project
 .settings
+js/config.js
+*node_modules/*
