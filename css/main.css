@@ -1,5 +1,5 @@
 html {
-  background-color: grey;
+    background-color: grey;
     min-height: 100%;
 }
 
@@ -8,13 +8,17 @@ body {
 }
 
 button {
-	display: block;
-	text-align: center;
+    display: block;
+    text-align: center;
     font-size: 200%;
     margin: 1em auto;
     padding: .5em;
     width: 10em;
     max-width: 80%;
     line-height: 1.2em;
+}
+
+.screen {
+    border: 0px solid red;
 }
 

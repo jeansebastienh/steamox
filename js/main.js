@@ -4,22 +4,73 @@
     const HOST     = Game.config.host;
     const PORT     = Game.config.port;
 
-    var init = function init() {
+    var init = function () {
+        screenManager().init();
         var btnCreate = document.getElementById('create-party');
         btnCreate.addEventListener('click', function() {
             alert('create');
         });
         var btnJoin = document.getElementById('join');
         btnJoin.addEventListener('click', function() {
-            hideHomeScreen();
             displayJoinGameScreen();
         });
     };
 
-    var displayJoinGameScreen = function() {
-        var screen = document.getElementById('joinscreen');
-        screen.style.display = 'block';
+    /**
+     * Screen Manager
+     */
+    var screenManager = function() {
+        //< @var HTMLNode
+        var currentScreen;
 
+        //< @var HTMLNodeList
+        var screens = document.querySelectorAll('.screen');
+
+        /**
+         * Hides every screen and only shows the first one
+         */
+        var init = function() {
+            hideAll();
+            currentScreen = screens[0];
+            show(currentScreen.id);
+        };
+
+        /**
+         * Hides all screens
+         */
+        var hideAll = function() {
+            for (var i = 0, len = screens.length; i < len; ++i) {
+                screens[i].style.display = 'none';
+            }
+        };
+
+        /**
+         * Displays a screen by its id
+         */
+        var show = function(screenId) {
+            var screen = document.querySelector('#' + screenId + '.screen');
+            if (screen !== undefined) {
+                hideAll();
+                screen.style.display = 'block';
+            }
+        };
+
+        /**
+         * @return HTMLNode currentScreen
+         */
+        var getCurrentScreen = function() {
+            return currentScreen;
+        }
+
+        return {
+            'init':             init,
+            'show':             show,
+            'getCurrentScreen': getCurrentScreen
+        };
+    };
+
+    var displayJoinGameScreen = function() {
+        screenManager().show('joinscreen');
         var form = document.getElementById('partycodeform');
         var partyCode = document.getElementById('partycode');
         form.addEventListener('submit', function(event) {
@@ -27,13 +78,8 @@
             joinParty(partyCode.value);
         });
     }
-    var hideHomeScreen = function() {
-        var screen = document.getElementById('homescreen');
-        screen.style.display = 'none';
-    }
 
     var joinParty = function(channel) {
-
         alert('Trying to join ' + channel);
     }
 
