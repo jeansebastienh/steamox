@@ -4,11 +4,16 @@
     <title>SteamOX</title>
     <meta name="viewport" content="width=device-width">
     <link href="css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
-<body>
+<body role="application">
     <div id="homescreen" class="screen">
         <h1>SteamOX</h1>
-        <button id="create-party">Create</button>
-        <button id="join">Join</button>
+        <form role="dialog" data-type="action" onsubmit="return false;" id="home-menu">
+            <menu>
+                <button id="create-party">Create</button>
+                <button id="join">Join</button>
+                <button id="about">About</button>
+            </menu>
+        </form>
     </div>
     <div id="createscreen" class="screen">
         <form action="" id="create-form" onsubmit="return false;">
