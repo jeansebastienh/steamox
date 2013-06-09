@@ -99,7 +99,7 @@ var user;
 
     var displayWaitingScreen = function() {
         screenManager().show('waitingscreen');
-        this.user.waitForResponse();
+        user.waitForResponse();
     };
 
 
