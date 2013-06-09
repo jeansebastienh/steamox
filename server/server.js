@@ -14,7 +14,7 @@ io.sockets.on('connection', function(socket) {
         socket.join(data.room);
         socket.set('username', data.username, function() {
             clients[socket.id] = {'username': data.username, 'room': data.room, 'score': 0};
-            io.sockets.in(data.room).emit('serverResponse', {'message': data.username + ' has joined' + '#' . data.room, 'userslist': io.sockets.clients(data.room), 'count': io.sockets.clients(data.room).length}});
+            io.sockets.in(data.room).emit('serverResponse', {'message': data.username + ' has joined' + '#' . data.room, 'userslist': io.sockets.clients(data.room), 'count': io.sockets.clients(data.room).length});
         });
     });
 
@@ -22,7 +22,7 @@ io.sockets.on('connection', function(socket) {
         socket.join(data.room);
         socket.set('username', data.username, function() {
             clients[socket.id] = {'username': data.username, 'room': data.room, 'score': 0};
-            io.sockets.in(data.room).emit('serverResponse', {'message': data.username + ' has joined' + '#' . data.room, 'userslist': io.sockets.clients(data.room), 'count': io.sockets.clients(data.room).length}});
+            io.sockets.in(data.room).emit('serverResponse', {'message': data.username + ' has joined' + '#' . data.room, 'userslist': io.sockets.clients(data.room), 'count': io.sockets.clients(data.room).length});
         });
     });
 });
