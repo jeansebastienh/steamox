@@ -83,16 +83,10 @@
         alert('Trying to join ' + channel);
     }
 
-    if (!document.getElementById('create-party')) {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-
     var socketIoAutoloader = function() {
         var script = document.createElement('script');
         script.src = PROTOCOL + '://' + HOST + ':' + PORT + '/socket.io/socket.io.js';
         document.body.appendChild(script);
-        //script.addEventListener('load', init, false);
+        script.addEventListener('load', init, false);
     }();
 })();
