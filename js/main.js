@@ -110,6 +110,7 @@ var user;
         user.waitForResponse();
         var btnStart = document.getElementById('startgame');
         btnStart.addEventListener('click', function() {
+           screenManager().show('demineur');
            user.startGame('demineur');
         }, false);
     };

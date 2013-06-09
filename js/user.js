@@ -25,19 +25,6 @@ User.prototype.waitForResponse = function()
     list.appendChild(listItem);
 
     this.socket.on('serverResponse', function(response) {
-        this.processResponse(response);
-    });
-};
-User.prototype.startGame = function(game)
-{
-    console.log('Trying to start a party of "' + game + '"');
-    this.socket.emit('startGame', {type: game});
-    this.socket.on('serverResponse', function(response) {
-        this.processResponse(response);
-    });
-}
-User.prototype.processResponse = function(response)
-{
         console.log('Server responds : ');
         console.log(response);
         switch(response.type) {
@@ -49,10 +36,25 @@ User.prototype.processResponse = function(response)
                     list.appendChild(listItem);
                 }
                 break;
+        }
+        
+    });
+};
+User.prototype.startGame = function(game)
+{
+    console.log('Trying to start a party of "' + game + '"');
+    this.socket.emit('startGame', {type: game});
+    this.socket.on('serverResponse', function(response) {
+        console.log('Server responds : ');
+        console.log(response);
+        switch(response.type) {
             case 'demineur':
                 console.log('Grid :');
                 console.log(response.data);
+//                var dem = new Demineur();
+//                dem.drawGrid(response.data);
                 break;
         }
 
+    });
 }
