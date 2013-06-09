@@ -20,5 +20,6 @@ User.prototype.waitForResponse = function(room)
 {
     this.socket.on('serverResponse', function(response) {
         console.log('Server respond ' + response.message);
+        console.dir(response);
     });
 };
