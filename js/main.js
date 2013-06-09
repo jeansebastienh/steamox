@@ -84,6 +84,7 @@ var user;
         form.addEventListener('submit', function(event) {
             event.preventDefault();
             user.joinParty(partyCode.value);
+            displayWaitingScreen();
         });
     };
 
@@ -92,7 +93,13 @@ var user;
         var btnCreate = document.querySelector('#createscreen button');
         btnCreate.addEventListener('click', function() {
             user.joinParty(document.querySelector('#create-room-name').value);
+            displayWaitingScreen();
         }, false);
+    };
+
+    var displayWaitingScreen = function() {
+        screenManager().show('waitingscreen');
+        this.user.waitForResponse();
     };
 
 
