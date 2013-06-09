@@ -30,7 +30,7 @@ User.prototype.waitForResponse = function(dom)
         switch(response.type) {
             case 'updateParty':
                 list.innerHTML = '';
-                for (var i = 0; i<= response.count; i++) {
+                for (var i = 0; i< response.count; i++) {
                     var listItem = dom.createElement('li');
                     listItem.innerHTML = 'User i';
                     list.appendChild(listItem);
