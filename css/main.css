@@ -18,6 +18,10 @@ button {
     line-height: 1.2em;
 }
 
+h1 {
+    text-align: center;
+}
+
 .screen {
     border: 0px solid red;
     display: none;
