@@ -25,7 +25,8 @@ User.prototype.waitForResponse = function(dom)
     list.appendChild(listItem);
 
     this.socket.on('serverResponse', function(response) {
-        console.log('Server respond ' + response.message);
+        console.log('Server responds : ');
+        console.log(response);
         switch(response.type) {
             case 'updateParty':
                 list.innerHTML = '';
