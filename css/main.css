@@ -19,4 +19,15 @@ h1 {
     border: 0px solid red;
     display: none;
 }
-
+#room-list-players {
+    padding:0px;
+}
+#room-list-players li {
+    display: block;
+    border : 1px solid black;
+    border-left: 0px;
+    border-right: 0px;
+    margin:0px;
+    padding:5px;
+    padding-left:10px;
+}
