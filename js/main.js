@@ -92,7 +92,7 @@ var user;
         screenManager().show('createscreen');
         var btnCreate = document.querySelector('#createscreen button');
         btnCreate.addEventListener('click', function() {
-            user.joinParty(document.querySelector('#create-room-name').value);
+            user.createParty(document.querySelector('#create-room-name').value);
             displayWaitingScreen();
         }, false);
     };
