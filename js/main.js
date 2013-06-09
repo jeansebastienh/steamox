@@ -99,7 +99,11 @@ var user;
 
     var displayWaitingScreen = function() {
         screenManager().show('waitingscreen');
-        this.user.waitForResponse();
+        this.user.waitForResponse(document);
+        var btnStart = document.querySelector('#startgame button');
+        btnStart.addEventListener('click', function() {
+            alert('Starting !');
+        }, false);
     };
 
 
