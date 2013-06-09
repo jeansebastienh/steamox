@@ -106,10 +106,10 @@ var user;
 
     var displayWaitingScreen = function() {
         screenManager().show('waitingscreen');
-        user.waitForResponse(document);
+        user.waitForResponse();
         var btnStart = document.getElementById('startgame');
         btnStart.addEventListener('click', function() {
-            alert('Starting !');
+           user.startGame('demineur');
         }, false);
     };
 
