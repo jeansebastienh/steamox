@@ -8,7 +8,7 @@ var user;
     const HOST     = Game.config.host;
     const PORT     = Game.config.port;
 
-    var init = function () {
+    var init = function() {
         screenManager().init();
 
         user = new User('toto');
@@ -18,9 +18,16 @@ var user;
         btnCreate.addEventListener('click', function() {
             displayCreateScreen();
         });
+        
         var btnJoin = document.getElementById('join');
         btnJoin.addEventListener('click', function() {
             displayJoinGameScreen();
+        });
+
+        
+        var btnSettings = document.getElementById('settings');
+        btnSettings.addEventListener('click', function() {
+            displaySettingsScreen();
         });
     };
 
@@ -99,11 +106,15 @@ var user;
 
     var displayWaitingScreen = function() {
         screenManager().show('waitingscreen');
-        this.user.waitForResponse(document);
+        user.waitForResponse(document);
         var btnStart = document.getElementById('startgame');
         btnStart.addEventListener('click', function() {
             alert('Starting !');
         }, false);
+    };
+
+    var displaySettingsScreen = function() {
+        screenManager().show('settings-screen');
     };
 
 

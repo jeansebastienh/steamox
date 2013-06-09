@@ -7,6 +7,7 @@ io.set('transports', ['websocket', 'flashsocket', 'htmlfile', 'xhr-polling', 'js
 
 
 var clients = {};
+var rooms   = [];
 
 var size = function(obj) {
     var size = 0, key;
@@ -22,6 +23,7 @@ var size = function(obj) {
 io.sockets.on('connection', function(socket) {
 
     socket.on('createParty', function(data) {
+
         socket.join(data.room);
 
         // Room is empty, let's create a new one
@@ -31,8 +33,6 @@ io.sockets.on('connection', function(socket) {
 
         clients[data.room].push({'username': data.username, 'room': data.room, 'score': 0});
 
-        
-        clients[socket.id] = {'username': data.username, 'room': data.room, 'score': 0};
         var response = {
             'type':    'updateParty',
             'message': data.username + ' has joined #' + data.room,
