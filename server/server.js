@@ -19,7 +19,6 @@ var size = function(obj) {
     return size;
 };
 
-
 io.sockets.on('connection', function(socket) {
 
     socket.on('createParty', function(data) {
@@ -55,5 +54,18 @@ io.sockets.on('connection', function(socket) {
             'debug':   ''
         };
         io.sockets.in(data.room).emit('serverResponse', response);
+    });
+
+    socket.on('startGame', function(data) {
+        var game = data.type;
+        switch (game) {
+            case 'demineur':
+                data = require('./' + game + '.js').runGame();
+                socket.emit('serverResponse', {type: game, data: data});
+                break;
+            default:
+                break;
+        }
+
     });
 });
