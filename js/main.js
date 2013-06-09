@@ -1,3 +1,5 @@
+var user;
+
 (function() {
 
     const PROTOCOL = Game.config.protocol;
@@ -6,6 +8,8 @@
 
     var init = function () {
         screenManager().init();
+        user = new User('toto');
+        user.setConnection(io.connect(PROTOCOL + '://' + HOST  + ':' + PORT));
         var btnCreate = document.getElementById('create-party');
         btnCreate.addEventListener('click', function() {
             alert('create');
@@ -75,12 +79,8 @@
         var partyCode = document.getElementById('partycode');
         form.addEventListener('submit', function(event) {
             event.preventDefault();
-            joinParty(partyCode.value);
+            user.joinParty(partyCode.value);
         });
-    }
-
-    var joinParty = function(channel) {
-        alert('Trying to join ' + channel);
     }
 
     var socketIoAutoloader = function() {
