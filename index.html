@@ -30,7 +30,14 @@
         </form>
     </div>
     <div id="waitingscreen" class="screen">
-        <p>Waiting for a server response...</p>
+        <h3>Waiting for others players...</h3>
+        <ul id="room-list-players"></ul>
+
+        <form role="dialog" data-type="action" onsubmit="return false;" id="waiting-menu">
+            <menu>
+                <button id="start-game">Start game</button>
+            </menu>
+        </form>
         <img src="img/loading.png">
     </div>
     <script type="text/javascript" src="js/config.js"></script>
