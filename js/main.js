@@ -79,8 +79,8 @@ var user;
 
     var displayJoinGameScreen = function() {
         screenManager().show('joinscreen');
-        var form = document.getElementById('join-room-name');
-        var partyCode = document.getElementById('partycode');
+        var form = document.getElementById('join-room-form');
+        var partyCode = document.getElementById('join-room-name');
         form.addEventListener('submit', function(event) {
             event.preventDefault();
             user.joinParty(partyCode.value);
