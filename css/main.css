@@ -20,5 +20,6 @@ button {
 
 .screen {
     border: 0px solid red;
+    display: none;
 }
 
