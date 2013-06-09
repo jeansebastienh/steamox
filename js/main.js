@@ -79,7 +79,7 @@ var user;
 
     var displayJoinGameScreen = function() {
         screenManager().show('joinscreen');
-        var form = document.getElementById('partycodeform');
+        var form = document.getElementById('join-room-name');
         var partyCode = document.getElementById('partycode');
         form.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -99,7 +99,7 @@ var user;
 
     var displayWaitingScreen = function() {
         screenManager().show('waitingscreen');
-        user.waitForResponse();
+        this.user.waitForResponse();
     };
 
 
