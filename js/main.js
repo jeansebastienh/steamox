@@ -11,7 +11,8 @@ var user;
     var init = function() {
         screenManager().init();
 
-        user = new User('toto');
+        var username = localStorage.getItem('username') || 'Firefox';
+        user = new User(username);
         user.setConnection(io.connect(PROTOCOL + '://' + HOST  + ':' + PORT));
 
         var btnCreate = document.getElementById('create-party');
@@ -115,6 +116,15 @@ var user;
 
     var displaySettingsScreen = function() {
         screenManager().show('settings-screen');
+
+        document.querySelector('#setting-username').value = localStorage.getItem('username');
+        
+        var formSettings = document.getElementById('settings-form');
+        formSettings.addEventListener('submit', function(event) {
+            event.preventDefault();
+            localStorage.setItem('username', document.querySelector('#setting-username').value);
+            screenManager().show('homescreen');
+        }, false);
     };
 
 
