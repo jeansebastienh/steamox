@@ -1,6 +1,8 @@
 var user;
 
-(function() {
+
+//(function() {
+
 
     const PROTOCOL = Game.config.protocol;
     const HOST     = Game.config.host;
@@ -8,11 +10,13 @@ var user;
 
     var init = function () {
         screenManager().init();
+
         user = new User('toto');
         user.setConnection(io.connect(PROTOCOL + '://' + HOST  + ':' + PORT));
+
         var btnCreate = document.getElementById('create-party');
         btnCreate.addEventListener('click', function() {
-            alert('create');
+            displayCreateScreen();
         });
         var btnJoin = document.getElementById('join');
         btnJoin.addEventListener('click', function() {
@@ -81,7 +85,16 @@ var user;
             event.preventDefault();
             user.joinParty(partyCode.value);
         });
-    }
+    };
+
+    var displayCreateScreen = function() {
+        screenManager().show('createscreen');
+        var btnCreate = document.querySelector('#createscreen button');
+        btnCreate.addEventListener('click', function() {
+            client.create(document.querySelector('#create-room-name'));
+        }, false);
+    };
+
 
     var socketIoAutoloader = function() {
         var script = document.createElement('script');
@@ -89,4 +102,4 @@ var user;
         document.body.appendChild(script);
         script.addEventListener('load', init, false);
     }();
-})();
+//})();
