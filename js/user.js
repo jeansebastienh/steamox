@@ -32,7 +32,7 @@ User.prototype.waitForResponse = function(dom)
                 list.innerHTML = '';
                 for (var i = 0; i< response.count; i++) {
                     var listItem = dom.createElement('li');
-                    listItem.innerHTML = 'User i';
+                    listItem.innerHTML = '[' + i + '] ' + response.users[i].username;
                     list.appendChild(listItem);
                 }
         }
